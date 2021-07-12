@@ -8,6 +8,19 @@ from .forms import VenueForm, EventForm
 # Create your views here.
 
 
+def update_event(request, event_id):
+	event = Event.objects.get(pk= event_id)
+	form = EventForm(request.POST or None ,instance= event) # Instance shws the initial values of the form
+	if form.is_valid():
+		form.save()
+		return redirect('event-list')
+	context= {
+		'event':event,
+		'form':form,
+	}
+	return render(request, 'events/update_event.html', context)
+
+
 def add_event(request):
 	submitted = False # Variable created to state whether user submit the form
 	if request.method == 'POST': # If user submit the form
