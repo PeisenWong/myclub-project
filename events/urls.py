@@ -18,4 +18,5 @@ urlpatterns = [
 	path('show_venues/<venues_id>', views.show_venues, name= 'show-venues'),
 	path('search_venues', views.search_venues, name='search-venues'),
 	path('update_venues/<venues_id>', views.update_venues, name='update-venues'),
+	path('add_event', views.add_event, name= 'add-event'),
 ]

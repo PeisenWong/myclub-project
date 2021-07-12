@@ -16,10 +16,11 @@
     <p class="card-text">
 	<ul>
 		<li>Date: {{ events.event_date }}</li>
-		<li>Venue Website: {{ events.venue.web }}</li>
+		<li>Venue Website:<a href="{{ events.venue.web }}"> {{ events.venue.web }}</li></a>
 		<li>Venue Email: {{ events.venue.email_address }}</li>
 		<li>Manager: {{ events.manager }}</li>
 		<li>Description: {{ events.description }}</li>
+		<li>Attendees: {{events.attendees}} </li>
 	</ul>
 	</p>
   </div>

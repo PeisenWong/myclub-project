@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Venue
+from .models import Venue, Event
 
 # Create a venue form
 class VenueForm(ModelForm):
@@ -22,4 +22,25 @@ class VenueForm(ModelForm):
 		'phone':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Phone number' }),
 		'web':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Web' }),
 		'email_address':forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email Address' }),
+		}
+
+class EventForm(ModelForm):
+	class Meta:
+		model = Event
+		fields = ('name', 'event_date', 'venue', 'manager', 'attendees', 'description')
+		labels={
+		'name':'' , # Change the label here
+		'event_date':'YYYY-MM-DD HH:MM:SS' ,
+		'venue':'Venue ' ,
+		'manager':'Manager ' ,
+		'attendees':'Attendees' ,
+		'description':'' ,
+		}
+		widgets = {
+		'name':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Event Name' }),
+		'event_date':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Event_date'}),
+		'venue':forms.Select(attrs={'class':'form-select', 'placeholder':'Venue' }),
+		'manager':forms.Select(attrs={'class':'form-select', 'placeholder':'Manager' }),
+		'attendees':forms.SelectMultiple(attrs={'class':'form-select', 'placeholder':'Attendees' }),
+		'description':forms.Textarea(attrs={'class':'form-control', 'placeholder':'Description' }),
 		}

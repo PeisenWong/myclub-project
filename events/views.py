@@ -4,8 +4,26 @@ from calendar import HTMLCalendar
 from datetime import datetime
 from django.http import HttpResponseRedirect
 from .models import Event, Venue
-from .forms import VenueForm
+from .forms import VenueForm, EventForm
 # Create your views here.
+
+
+def add_event(request):
+	submitted = False # Variable created to state whether user submit the form
+	if request.method == 'POST': # If user submit the form
+		form = EventForm(request.POST) # Pass the value of the form written by user to the form
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/add_event?submitted=True') # Pass the submitted variable to the url
+	else: # User just came into the form page		
+		form = EventForm
+		if 'submitted' in request.GET: # User submit the form (Get the submitted)
+			submitted= True
+	context= {
+		'form':form,
+		'submitted':submitted
+	}
+	return render(request, 'events/add_event.html', context)
 
 
 def update_venues(request, venues_id):
