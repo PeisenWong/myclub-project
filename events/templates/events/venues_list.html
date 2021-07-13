@@ -9,7 +9,11 @@
 	{% for venues in venues_list %}
 		<tr>
 			<td><a href="{% url 'show-venues' venues.id %} ">{{ venues }}</a> </td>
-			<td align="right"><a href="{% url 'update-venues' venues.id %} "><button>Update</button></a></td>
+			<td align="right">
+			<a href="{% url 'update-venues' venues.id %} "><button class="btn btn-success">Update</button></a>
+			<a href="{% url 'delete-venue' venues.id %} "><button class="btn btn-danger">Delete</button></a>	
+			</td>
+			
 		</tr>
 		
 	{% endfor %}

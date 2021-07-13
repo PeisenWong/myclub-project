@@ -20,13 +20,15 @@
 		<li>Venue Email: {{ events.venue.email_address }}</li>
 		<li>Manager: {{ events.manager }}</li>
 		<li>Description: {{ events.description }}</li>
-		<li>Attendees: {{events.attendees}} </li>
+		<li>Attendees: {{ events.attendees }} </li>
 	</ul>
 	</p>
   </div>
   <div class="card-footer text-muted">
-    <a href="{% url 'update-event' events.id %} "><button>Update</button></a>
+    <a href="{% url 'update-event' events.id %} "><button class="btn btn-success">Update</button></a>
+    <a href="{% url 'delete-event' events.id %} "><button class="btn btn-danger">Delete</button></a>
   </div>
+  
 </div>
 <br/>
 {% endfor %}

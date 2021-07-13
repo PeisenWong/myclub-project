@@ -8,9 +8,20 @@ from .forms import VenueForm, EventForm
 # Create your views here.
 
 
+def delete_venue(request, venue_id):
+	venue = Venue.objects.get(pk = venue_id)
+	venue.delete()
+	return redirect('venues-list')
+
+def delete_event(request, event_id):
+	event = Event.objects.get(pk = event_id)
+	event.delete()
+	return redirect('event-list')
+
+
 def update_event(request, event_id):
 	event = Event.objects.get(pk= event_id)
-	form = EventForm(request.POST or None ,instance= event) # Instance shws the initial values of the form
+	form = EventForm(request.POST or None ,instance= event) # Instance shows the initial values of the form
 	if form.is_valid():
 		form.save()
 		return redirect('event-list')
