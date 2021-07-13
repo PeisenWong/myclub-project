@@ -20,7 +20,14 @@
 		<li>Venue Email: {{ events.venue.email_address }}</li>
 		<li>Manager: {{ events.manager }}</li>
 		<li>Description: {{ events.description }}</li>
-		<li>Attendees: {{ events.attendees }} </li>
+		<li>Attendees:  </li>
+		<ol>
+		{% for user in events.attendees.all %} <!-- Use events.attendees.all to access all attendees in events -->
+		
+		<li>{{ user }}</li>
+		
+		{% endfor %}
+	</ol>
 	</ul>
 	</p>
   </div>
