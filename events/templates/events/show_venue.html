@@ -18,6 +18,10 @@
 	</ul>
 	</p>
   </div>
+  <div class="card-footer text-muted">
+    <a href="{% url 'update-venues' venue.id %} "><button class="btn btn-success">Update</button></a>
+    <a href="{% url 'delete-venue' venue.id %} "><button class="btn btn-danger">Delete</button></a>
+  </div>
 </div>
 
 

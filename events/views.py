@@ -83,7 +83,7 @@ def show_venues(request, venues_id):
 
 
 def venues_list(request):
-	venues_list = Venue.objects.all()
+	venues_list = Venue.objects.all().order_by('name') # can filter with all fields in the model
 	context = {
 		'venues_list':venues_list
 	}
@@ -108,7 +108,7 @@ def add_venue(request):
 	return render(request, 'events/add_venue.html', context)
 
 def all_events(request):
-	event_list = Event.objects.all()
+	event_list = Event.objects.all().order_by('event_date')
 	context = {
 		'event_list':event_list
 	}
