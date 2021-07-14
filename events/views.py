@@ -10,6 +10,9 @@ from django.http import HttpResponse
 # Create your views here.
 
 
+def event_download(request):
+	return render(request, 'events/event_download.html', {})
+
 def event_text(request):
 	response = HttpResponse(content_type = 'text/plain' )
 	response['Content-Disposition'] = 'attachment ; filename = event.txt'
