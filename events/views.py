@@ -9,6 +9,21 @@ from django.http import HttpResponse
 
 # Create your views here.
 
+
+def event_text(request):
+	response = HttpResponse(content_type = 'text/plain' )
+	response['Content-Disposition'] = 'attachment ; filename = event.txt'
+
+	events = Event.objects.all()
+	lines = []
+
+	for event in events:
+		lines.append(f'{event.name}\n{event.event_date}\n{event.venue}\n{event.manager}\n{event.description}\n\n\n' )
+
+	response.writelines(lines)
+	return response
+
+
 def venue_text(request):
 	response = HttpResponse(content_type = 'text/plain')
 	response['Content-Disposition'] = 'attachment ; filename = venues.txt'
