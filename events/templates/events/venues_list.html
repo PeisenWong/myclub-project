@@ -19,5 +19,6 @@
 	{% endfor %}
 </table>
 <br/><br/>
-<a href="{% url 'venue-text' %} "><button class="btn btn-success">Download all venue in txt files</button></a> 
+<a href="{% url 'venue-text' %} "><button class="btn btn-success">Download all venue in txt files</button></a>    
+<a href="{% url 'venue-csv' %} "><button class="btn btn-danger">Download all venue in csv files</button></a> 
 {% endblock %}
